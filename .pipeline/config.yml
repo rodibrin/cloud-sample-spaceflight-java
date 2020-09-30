@@ -1,0 +1,32 @@
+general:
+  buildTool: 'mta'
+  productiveBranch: 'master'
+  gitUserName: 'd046169'
+  gitUserEMail: 'r.stengel@sap.com'
+  gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
+  verbose: true
+  
+stages:
+  Build:
+    script: this
+ 
+steps:
+  dockerExecute:
+    dockerPullImage: true
+    sidecarPullImage: true
+    stashContent: []
+  mtaBuild:
+    mtaBuildTool: 'classic'
+    buildTarget: 'NEO'
+  cloudFoundryDeploy:
+    deployTool: 'mtaDeployPlugin'
+    deployType: 'standard'
+    cloudFoundry:
+      org: 'pipertest'
+      space: 'J333'
+      credentialsId: 'CF_CREDENTIALSID'
+  neoDeploy:
+    neo:
+      host: 'eu1.hana.demand.com'
+      account: 'wmczr8zwii'
+      credentialsId: 'NEO_CREDENTIALS_ID'
