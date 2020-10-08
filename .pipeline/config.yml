@@ -16,17 +16,13 @@ steps:
     sidecarPullImage: true
     stashContent: []
   mtaBuild:
-    mtaBuildTool: 'classic'
-    buildTarget: 'NEO'
+    mtaBuildTool: 'cloudMbt'
+    buildTarget: 'CF'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
     cloudFoundry:
-      org: 'pipertest'
-      space: 'J333'
+      apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+      org: 'CDESDemo_fiorioncf'
+      space: 'dev'
       credentialsId: 'CF_CREDENTIALSID'
-  neoDeploy:
-    neo:
-      host: 'eu1.hana.demand.com'
-      account: 'wmczr8zwii'
-      credentialsId: 'NEO_CREDENTIALS_ID'
